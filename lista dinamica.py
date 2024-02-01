@@ -1,9 +1,7 @@
 itens_quantity = int(input("Quantos itens voce deseja comprar? "))
 
 
-
 itens_list = []
-
 
 for item in range(itens_quantity):
     while True:
