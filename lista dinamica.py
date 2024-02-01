@@ -1,10 +1,18 @@
 itens_quantity = int(input("Quantos itens voce deseja comprar? "))
 
 
+
 itens_list = []
 
+
 for item in range(itens_quantity):
-    itens_wanted = input(f"item {item+1}: ")
+    while True:
+        itens_wanted = input(f"item {item+1}: ")
+        if itens_wanted.isdigit():
+            print("Numeros nao sao permitidos")
+            continue
+        else: break
+
     itens_list.append(itens_wanted)
    
 
@@ -12,20 +20,18 @@ for item in range(itens_quantity):
 def enumerate_lista(list):
     print("Assim ficou sua lista...")
 
-    for number, item in enumerate(list):
+    for number, item in enumerate(list, 1):
         print(F"{number} - {item}")
    
 
 
 while True:
     enumerate_lista(itens_list)
-    question1 = input('Deseja adicionar/remover algum item? Caso não queira, insira "Nao"').lower()
+    question1 = input('Deseja adicionar/remover algum item? Caso não queira, insira "Nao" ').lower()
     
-    if "nao" in question1:
-        question2 = input('Deseja encerrar o programa? (S/N)').lower()
+    if "nao" in question1: break
+        
 
-        if question2 == "s":
-            break
 
     if question1 == 'remover':
         iten_remover = input("Que item voce deseja remover? insira nome/numero: ")
@@ -47,14 +53,18 @@ while True:
                 continue
         
 
+
     elif question1 == 'adicionar':
         iten_adder = input("Que item voce deseja adicionar? ")
+
         if iten_adder.isdigit():
             print("Não é permitido adicionar numeros")
             break
+
         itens_list.append(iten_adder)
             
-        
+    
+
     else:
         print('Digite apenas "adicionar/remover"')
         continue
